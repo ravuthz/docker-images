@@ -1,0 +1,16 @@
+version: '3.3'
+services:
+    app:
+        image: jenkinsci/blueocean
+        privileged: true
+        user: root
+        ports:
+            - '8080:8080'
+            - '50000:50000'
+        container_name: myjenkins
+        volumes:
+            - ./logs:/var/log/jenkins
+            - ./data:/var/jenkins_home
+        environment:
+            - JAVA_OPTS="-Xmx2048m"
+            - JENKINS_OPTS="--handlerCountMax=200"

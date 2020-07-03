@@ -1,0 +1,12 @@
+version: '3.7'
+services:
+    web:
+        image: nginx
+        privileged: true
+        user: root
+        container_name: mynginx
+        ports:
+            - '80:80'
+        volumes:
+            - ./html:/usr/share/nginx/html
+            - ./conf:/etc/nginx

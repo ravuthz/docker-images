@@ -1,0 +1,17 @@
+version: '3.7'
+services:
+    web:
+        build: .
+        privileged: true
+        user: root
+        container_name: mytomcat
+        ports:
+            - '8080:8080'
+        volumes: 
+            - /root/dockers/tomcat/webapps:/usr/local/tomcat/webapps
+            # - './conf/tomcat-users.xml:/usr/local/tomcat/conf/tomcat-users.xml'
+            # - './conf/context.xml:/usr/local/tomcat/webapps/manager/META-INF/context.xml'
+        # entrypoint: /usr/bin/entrypoint.sh
+        environment: 
+            - JAVA_OPTS="-Dspring.profiles.active=prd"
+            
